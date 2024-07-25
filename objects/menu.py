@@ -153,23 +153,16 @@ class MusicRoom:
         if(self.stat==0):
             self.fade_in()
         elif(self.stat==1):
-            i=self.menu_sys(6,CON)
+            i=self.menu_sys(3,CON)
             if(i==1):
                 if(self.select==0):
-                    music_load("22k")
+                    music_play("Cirno Stage")
                 elif(self.select==1):
-                    music_load("16k")
+                    music_play("Shanghai!!!")
                 elif(self.select==2):
-                    music_load("11k")
+                    music_play("Brutal Sister")
                 elif(self.select==3):
-                    music_load("8k")
-                elif(self.select==4):
-                    music_load("m22k")
-                elif(self.select==5):
-                    music_load("m16k")
-                elif(self.select==6):
-                    music_load("m11k")
-                music_play()
+                    music_play("Sis")
             elif(i==2):
                 self.stat=2
         else:
@@ -181,16 +174,8 @@ class MusicRoom:
         pos=self.Ppos+(self.pos-self.Ppos)*TICK
         draw_text("Music Room",(32-pos,32),DISPLAY,font=1,color=(0,127,255),mode=3)
         i=(self.select==0)*155+100
-        draw_text("22050HZ Stereo",(32,64-pos),DISPLAY,color=(i,i,i))
+        draw_text("Cirno Stage",(32,64-pos),DISPLAY,color=(i,i,i))
         i=(self.select==1)*155+100
-        draw_text("16000HZ Stereo",(32,72-pos),DISPLAY,color=(i,i,i))
+        draw_text("Shanghai!!!",(32,72-pos),DISPLAY,color=(i,i,i))
         i=(self.select==2)*155+100
-        draw_text("11025HZ Stereo",(32,80-pos),DISPLAY,color=(i,i,i))
-        i=(self.select==3)*155+100
-        draw_text("8000HZ Stereo",(32,88-pos),DISPLAY,color=(i,i,i))
-        i=(self.select==4)*155+100
-        draw_text("22050HZ Mono",(32,96-pos),DISPLAY,color=(i,i,i))
-        i=(self.select==5)*155+100
-        draw_text("16000HZ Mono",(32,104-pos),DISPLAY,color=(i,i,i))
-        i=(self.select==6)*155+100
-        draw_text("11025HZ Mono",(32,112-pos),DISPLAY,color=(i,i,i))
+        draw_text("Brutal Sister",(32,80-pos),DISPLAY,color=(i,i,i))

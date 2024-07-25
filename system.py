@@ -18,27 +18,20 @@ def clamp(n,min,max):
         return max
     return n
 import pygame as P
+P.mixer.pre_init(22050,-16,2,64)
 P.init()
-MUS_PLAYED=0
-MUS_LOOP=0
-MUS_TIME=0
-def music_load(mus):
-    global MUS_LOOP,MUS_TIME,MUS_PLAYED
-    if mus!="Cirno Stage":
-        MUS_LOOP=0.67+1.2
-        MUS_TIME=64.6+1.2
+def music_play(mus,time=0):
     P.mixer.music.unload()
-    P.mixer.music.load("ost/"+str(mus)+".mp3")
-def music_play(time=0):
-    global MUS_PLAYED
-    MUS_PLAYED=time
-    P.mixer.music.play(start=time)
+    try:
+        P.mixer.music.load("ost/"+str(mus)+"I.ogg")
+        P.mixer.music.queue("ost/"+str(mus)+"L.ogg",loops=-1)
+        i=0
+    except:
+        P.mixer.music.load("ost/"+str(mus)+".ogg")
+        i=-1
+    P.mixer.music.play(start=time,loops=i)
 def music_stop(fade):
     P.mixer.music.fadeout(int(fade*1000))
-def update_music():
-    global MUS_LOOP,MUS_TIME,MUS_PLAYED
-    if P.mixer.music.get_pos()/1000>MUS_TIME-MUS_PLAYED+0.07:
-        music_play(time=MUS_LOOP)
 FONT=[]
 FONT.append(P.font.Font("font/NES.ttf",8))
 FONT.append(P.font.Font("font/TH6.ttf",16))

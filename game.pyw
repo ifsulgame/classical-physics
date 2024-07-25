@@ -25,7 +25,6 @@ def controls():
     int(i[P.K_x]),int(i[P.K_c]),int(i[P.K_ESCAPE])]
 def update():
     global TICK,color
-    update_music()
     if(TICK>1):
         TICK-=1
         controls()
