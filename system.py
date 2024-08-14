@@ -20,6 +20,18 @@ def clamp(n,min,max):
 import pygame as P
 P.mixer.pre_init(22050,-16,2,64)
 P.init()
+JOY=[0,1,2,3]
+def get_joystick():
+    return JOY
+def set_joystick(button,index):
+    swap=1
+    for i in range(4):
+        if(swap and JOY[i]==button):
+            JOY[i]=JOY[index]
+            JOY[index]=button
+            swap=0
+    if(swap):
+        JOY[index]=button
 def music_play(mus,time=0):
     P.mixer.music.unload()
     try:
